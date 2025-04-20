@@ -285,50 +285,39 @@
     
     /* Contact section */
     .contact {
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       background: var(--glass-bg);
-      padding: 3rem;
-      border-radius: 12px;
+      padding: 4rem;
       border: 1px solid var(--glass-border);
       margin: 5rem 0;
+      text-align: center;
     }
-    
-    .contact-form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
     }
-    
-    .form-group {
-      margin-bottom: 1.5rem;
+
+    .contact-intro {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      text-transform: uppercase;
     }
-    
-    .form-group.full {
-      grid-column: span 2;
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--glass-border);
-      border-radius: 6px;
-      color: var(--text-primary);
+
+    .contact-email-btn {
       font-size: 1rem;
-      transition: all 0.3s ease;
+      padding: 1.5rem 4rem;
+      margin: 2rem 0;
     }
-    
-    .form-control:focus {
-      outline: none;
-      border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.1);
-    }
-    
-    textarea.form-control {
-      min-height: 150px;
-      resize: vertical;
+
+    .contact-info {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 2rem;
     }
     
     /* Pricing Section */
