@@ -6,40 +6,40 @@
   <title>Your Photography Portfolio</title>
   <style>
     :root {
-      --glass-bg: rgba(18, 18, 18, 0.8);
-      --glass-highlight: rgba(255, 255, 255, 0.1);
-      --glass-border: rgba(255, 255, 255, 0.05);
-      --text-primary: rgba(255, 255, 255, 0.9);
-      --text-secondary: rgba(255, 255, 255, 0.6);
-      --accent: #0a84ff;
+      --primary-bg: #000000;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-highlight: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --text-primary: #FFFFFF;
+      --text-secondary: #999999;
+      --accent: #FFFFFF;
+      --accent-light: rgba(255, 255, 255, 0.15);
     }
     
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
     }
     
     body {
       background-color: #000;
       color: var(--text-primary);
       min-height: 100vh;
-      background-image: linear-gradient(125deg, #000, #111);
+      letter-spacing: 0.05em;
     }
     
     .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: 1rem;
     }
     
     /* Header styles */
     header {
-      padding: 1.5rem 0;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: var(--glass-bg);
+      padding: 1rem 0;
+      background: var(--primary-bg);
       border-bottom: 1px solid var(--glass-border);
       position: sticky;
       top: 0;
@@ -53,9 +53,10 @@
     }
     
     .logo {
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
     }
     
     nav ul {
@@ -64,28 +65,26 @@
     }
     
     nav ul li {
-      margin-left: 2rem;
+      margin-left: 3rem;
     }
     
     nav ul li a {
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 0.3px;
-      transition: color 0.3s ease;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+      font-weight: 500;
     }
     
-    nav ul li a:hover {
+    nav ul li a:hover, nav ul li a.active {
       color: var(--text-primary);
-    }
-    
-    nav ul li a.active {
-      color: var(--accent);
     }
     
     /* Hero section */
     .hero {
-      height: 80vh;
+      height: 85vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -100,73 +99,74 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('hero image.jpg');
+      background-image: url('/api/placeholder/1200/800');
       background-size: cover;
       background-position: center;
-      filter: brightness(0.4);
+      filter: grayscale(100%) brightness(0.3);
       z-index: -1;
     }
     
     .hero-content {
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      background: var(--glass-bg);
-      padding: 3rem;
-      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 4rem;
       border: 1px solid var(--glass-border);
       max-width: 700px;
     }
     
     .hero h1 {
-      font-size: 3rem;
+      font-size: 4rem;
       margin-bottom: 1rem;
-      font-weight: 700;
-      letter-spacing: -1px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
     }
     
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--text-secondary);
       margin-bottom: 2rem;
-      line-height: 1.6;
+      line-height: 1.8;
+      letter-spacing: 0.1em;
     }
     
     .btn {
       display: inline-block;
-      padding: 0.8rem 1.8rem;
-      background: var(--accent);
+      padding: 1rem 2.5rem;
+      background: transparent;
       color: white;
       text-decoration: none;
-      border-radius: 6px;
+      border: 2px solid white;
       font-weight: 500;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
       transition: all 0.3s ease;
+      font-size: 0.8rem;
     }
     
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(10, 132, 255, 0.3);
+      background: white;
+      color: black;
     }
     
     /* Gallery section */
     .section-title {
-      margin: 4rem 0 2rem;
-      font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
+      margin: 5rem 0 3rem;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
     }
     
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
     }
     
     .gallery-item {
       position: relative;
       overflow: hidden;
-      border-radius: 8px;
-      aspect-ratio: 3/4;
+      aspect-ratio: 1;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
@@ -176,14 +176,12 @@
       height: 100%;
       object-fit: cover;
       transition: all 0.5s ease;
-    }
-    
-    .gallery-item:hover {
-      transform: translateY(-5px);
+      filter: grayscale(100%);
     }
     
     .gallery-item:hover img {
       transform: scale(1.05);
+      filter: grayscale(0%);
     }
     
     .gallery-item::after {
@@ -193,8 +191,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 60%);
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
       z-index: 1;
+    }
+    
+    .gallery-item:hover::after {
+      opacity: 1;
     }
     
     .gallery-item-info {
@@ -217,25 +221,28 @@
     .gallery-item-title {
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
     
     .gallery-item-category {
       font-size: 0.8rem;
       color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
     }
     
     /* About section */
     .about {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 0;
       align-items: center;
       margin: 5rem 0;
     }
     
     .about-image {
       overflow: hidden;
-      border-radius: 12px;
       border: 1px solid var(--glass-border);
     }
     
@@ -243,28 +250,37 @@
       width: 100%;
       height: auto;
       display: block;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+    
+    .about-image:hover img {
+      filter: grayscale(0%);
     }
     
     .about-content {
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       background: var(--glass-bg);
-      padding: 2.5rem;
-      border-radius: 12px;
+      padding: 3rem;
       border: 1px solid var(--glass-border);
+      margin-left: -3rem;
+      margin-top: 3rem;
+      position: relative;
+      z-index: 1;
     }
     
     .about h2 {
       margin-bottom: 1.5rem;
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
     }
     
     .about p {
       color: var(--text-secondary);
-      line-height: 1.7;
+      line-height: 1.8;
       margin-bottom: 1rem;
+      letter-spacing: 0.05em;
     }
     
     /* Contact section */
@@ -315,14 +331,405 @@
       resize: vertical;
     }
     
+    /* Pricing Section */
+    .pricing-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.8rem;
+    }
+    
+    .pricing-category {
+      margin-bottom: 5rem;
+    }
+    
+    .category-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    
+    .pricing-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0;
+    }
+    
+    .pricing-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 2.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .pricing-card:not(:last-child) {
+      border-right: none;
+    }
+    
+    .pricing-card:hover {
+      background: var(--glass-highlight);
+      border-color: white;
+      z-index: 1;
+    }
+    
+    .pricing-card.featured {
+      border-color: white;
+      background: var(--glass-highlight);
+    }
+    
+    .pricing-badge {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      background: white;
+      color: black;
+      padding: 0.5rem 1.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    
+    .pricing-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .pricing-header h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+    
+    .price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.05em;
+    }
+    
+    .pricing-features {
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+    
+    .pricing-features ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .pricing-features li {
+      padding: 0.8rem 0;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--glass-border);
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    
+    .pricing-btn {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .addons-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0;
+    }
+    
+    .addon-item {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .addon-item:not(:last-child) {
+      border-right: none;
+    }
+    
+    .addon-item:hover {
+      background: var(--glass-highlight);
+      border-color: white;
+      z-index: 1;
+    }
+    
+    .addon-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .addon-header h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    
+    .addon-price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+    }
+    
+    .addon-item p {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+    }
+    
+    .pricing-cta {
+      text-align: center;
+      margin-top: 5rem;
+      padding: 4rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      transition: all 0.3s ease;
+    }
+    
+    .pricing-cta:hover {
+      background: var(--glass-highlight);
+      border-color: white;
+    }
+    
+    .pricing-cta h3 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+    
+    .btn-large {
+      font-size: 0.9rem;
+      padding: 1.2rem 3rem;
+    }
+    
+    /* Contact section */
+    .contact {
+      background: var(--glass-bg);
+      padding: 3rem;
+      border: 1px solid var(--glass-border);
+      margin: 5rem 0;
+    }
+    
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-group.full {
+      grid-column: span 2;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 1rem;
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: white;
+      background: var(--glass-highlight);
+    }
+    
+    .form-control::placeholder {
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
     /* Footer */
     footer {
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: var(--glass-bg);
+      background: var(--primary-bg);
       padding: 2rem 0;
       border-top: 1px solid var(--glass-border);
       text-align: center;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: white;
+      border-color: white;
+    }
+    
+    .social-link:hover svg {
+      color: black;
+    }
+    
+    .copyright {
+      color: var(--text-secondary);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+    
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      position: relative;
+    }
+    
+    .modal-image {
+      max-width: 100%;
+      max-height: 90vh;
+      display: block;
+    }
+    
+    .modal-close {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      font-size: 1.5rem;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-close:hover {
+      background: white;
+      color: black;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      nav ul {
+        margin-top: 1rem;
+      }
+      
+      nav ul li {
+        margin: 0 1rem;
+      }
+      
+      .hero-content {
+        padding: 2rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .about {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-content {
+        margin-left: 0;
+        margin-top: -3rem;
+      }
+      
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-group.full {
+        grid-column: span 1;
+      }
+      
+      .pricing-container, .addons-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .pricing-card:not(:last-child), .addon-item:not(:last-child) {
+        border-right: 1px solid var(--glass-border);
+        border-bottom: none;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
     }
     
     .social-links {
@@ -446,6 +853,7 @@
             <li><a href="#" class="active">Home</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#pricing">Pricing</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
@@ -458,7 +866,7 @@
     <div class="container">
       <div class="hero-content">
         <h1>Capturing Moments in Time</h1>
-        <p>Welcome to my photography portfolio. I specialize in capturing the beauty of everyday life through my lens, focusing on [your photography style].</p>
+        <p>Welcome to my photography portfolio. I specialize in capturing timeless moments through 35mm film photography.</p>
         <a href="#gallery" class="btn">View Gallery</a>
       </div>
     </div>
@@ -469,7 +877,7 @@
     <div class="gallery">
       <!-- Gallery Item 1 -->
       <div class="gallery-item">
-        <img src="/api/placeholder/600/800" alt="Gallery Image 1">
+        <img src="images/your-photo-1.jpg" alt="Mountain Sunset">
         <div class="gallery-item-info">
           <h3 class="gallery-item-title">Image Title</h3>
           <p class="gallery-item-category">Category</p>
@@ -534,6 +942,178 @@
         <p>I specialize in [your specialization/style] photography, with a particular focus on [specific niche or subject]. My work has been featured in [publications/exhibitions if applicable].</p>
         <p>When I'm not behind the camera, you can find me [hobbies/interests]. I believe that [your photography philosophy or approach].</p>
       </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="container">
+    <h2 class="section-title">Grad Photo Packages - Spring 2025</h2>
+    <p class="pricing-subtitle">Shot entirely on 35mm and medium format film. Every image is hand-scanned and edited to preserve its timeless, authentic look.</p>
+    
+    <div class="pricing-category">
+      <h3 class="category-title">Film-Only Grad Photo Packages</h3>
+      <div class="pricing-container">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Bite-Size Package</h3>
+            <div class="price">$100</div>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li>1 location</li>
+              <li>25-30 minutes</li>
+              <li>1 roll of 35mm film (24-36 images)</li>
+              <li>Digital delivery of all usable scans</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn pricing-btn">Book Now</a>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Basic Package</h3>
+            <div class="price">$180</div>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li>2 locations</li>
+              <li>Up to 1 hour</li>
+              <li>2 rolls of film</li>
+              <li>40-50 film scans</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn pricing-btn">Book Now</a>
+        </div>
+        
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-header">
+            <h3>Standard Package</h3>
+            <div class="price">$250</div>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li>3 locations</li>
+              <li>Up to 90 minutes</li>
+              <li>3 rolls of film</li>
+              <li>60-75 film scans</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn pricing-btn">Book Now</a>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Premium Package</h3>
+            <div class="price">$300</div>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li>4-5 locations</li>
+              <li>Up to 2 hours</li>
+              <li>2 outfits</li>
+              <li>4 rolls of film</li>
+              <li>80-100 film scans</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn pricing-btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pricing-category">
+      <h3 class="category-title">Group Options</h3>
+      <div class="pricing-container">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Duo Package</h3>
+            <div class="price">$85 per person</div>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li>2 people</li>
+              <li>1-2 locations</li>
+              <li>Solo + joint shots</li>
+              <li>1 roll per person</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn pricing-btn">Book Now</a>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Group Grad Session</h3>
+            <div class="price">$110/person</div>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li>3-5 people</li>
+              <li>1.5 hours</li>
+              <li>1-2 locations</li>
+              <li>1 roll per person</li>
+              <li>Solo + group photos</li>
+              <li>Individual galleries</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn pricing-btn">Book Now</a>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Sorority Sisterhood Package</h3>
+            <div class="price">Custom Quote</div>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li>Custom quote depending on group size</li>
+              <li>Group + individual portraits</li>
+              <li>Shot on film with optional styling guidance</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn pricing-btn">Get Quote</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pricing-category">
+      <h3 class="category-title">Add-Ons</h3>
+      <div class="addons-container">
+        <div class="addon-item">
+          <div class="addon-header">
+            <h4>Extra Roll of 35mm Film</h4>
+            <span class="addon-price">$30</span>
+          </div>
+          <p>Adds 24-36 extra photos. Color or black & white available.</p>
+        </div>
+        
+        <div class="addon-item">
+          <div class="addon-header">
+            <h4>Medium Format Roll (120 film)</h4>
+            <span class="addon-price">$50</span>
+          </div>
+          <p>12 ultra-sharp, high-res images. Perfect for standout portraits.</p>
+        </div>
+        
+        <div class="addon-item">
+          <div class="addon-header">
+            <h4>Rush Delivery</h4>
+            <span class="addon-price">$40</span>
+          </div>
+          <p>Delivery within 3 days.</p>
+        </div>
+        
+        <div class="addon-item">
+          <div class="addon-header">
+            <h4>Physical Prints</h4>
+            <span class="addon-price">Upon Request</span>
+          </div>
+          <p>Available upon request.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pricing-cta">
+      <h3>Now Booking Spring 2025 Grads!</h3>
+      <a href="#contact" class="btn btn-large">Contact Me to Book</a>
     </div>
   </section>
 
