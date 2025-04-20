@@ -85,9 +85,6 @@
     /* Hero section */
     .hero {
       height: 100vh;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
       text-align: left;
       position: relative;
       overflow: hidden;
@@ -106,37 +103,57 @@
     }
     
     .hero-content {
-      background: transparent;
-      padding: 3rem;
-      border: none;
-      max-width: 500px;
-      margin-bottom: 5rem;
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      z-index: 1;
     }
     
     .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
+      font-size: 7rem;
+      line-height: 0.9;
+      margin: 0;
       font-weight: 800;
       letter-spacing: -0.05em;
       text-transform: uppercase;
       color: white;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
     
-    .hero p {
-      font-size: 1rem;
-      color: white;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-      margin-bottom: 2rem;
-      line-height: 1.8;
-      letter-spacing: 0.1em;
+    .hero h1 span {
+      display: block;
+      font-size: 1.5rem;
+      letter-spacing: 0.5em;
+      font-weight: 400;
+      margin-bottom: 1rem;
     }
 
-    /* NEW: (these styles were added) */
-    .hero .btn {
+    
+    .hero-btn {
+      display: block;
+      width: fit-content;
+      padding: 1rem 3rem;
+      margin-top: 2rem;
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      border: 2px solid white;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    /* NEW: (didn't exist before) */
+    .hero-btn::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 2px;
       background: white;
-      color: black;
-      border: none;
+      right: -130px;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     .hero .btn:hover {
@@ -868,15 +885,12 @@
 
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="container">
-      <div class="hero-content">
-        <h1>Capturing Moments in Time</h1>
-        <p>Welcome to my photography portfolio. I specialize in capturing timeless moments through 35mm film photography.</p>
-        <a href="#gallery" class="btn">View Gallery</a>
-      </div>
+    <div class="hero-content">
+      <h1><span>FILM PHOTOGRAPHY</span>FOR TIMELESS MOMENTS</h1>
+      <a href="#gallery" class="hero-btn">VIEW GALLERY</a>
     </div>
   </section>
-
+  
   <section id="gallery" class="container">
     <h2 class="section-title">Featured Work</h2>
     <div class="gallery">
