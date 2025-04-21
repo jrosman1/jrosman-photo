@@ -704,12 +704,12 @@
 
     /* Add these styles to your CSS */
     /* Set initial states for animations */
-    .gallery-item, .about-image img, .about-content {
+    .gallery-item, .about-image, .about-content {
       opacity: 0.4;
       transition: all 0.8s ease-out;
     }
 
-    .gallery-item img {
+    .gallery-item img, .about-image img {
       filter: grayscale(100%);
       transition: all 0.8s ease-out;
     }
@@ -734,7 +734,7 @@
     }
 
     /* Important - add this rule to remove grayscale on fade-in */
-    .gallery-item.fade-in img {
+    .gallery-item.fade-in img, .about-image img.fade-in img {
       filter: grayscale(0%) !important;
     }
 
@@ -760,7 +760,7 @@
     /* Override hover behavior on mobile */
     @media (max-width: 768px) {
       /* Disable hover effects that might interfere */
-      .gallery-item:hover img {
+      .gallery-item:hover img, .about-image img:hover {
         transform: none;
         filter: grayscale(100%); /* Maintain grayscale until scrolled */
       }
@@ -771,7 +771,7 @@
       }
       
       /* Only remove grayscale and show info when scrolled */
-      .gallery-item.fade-in img {
+      .gallery-item.fade-in img, .about-image img.fade-in img {
         filter: grayscale(0%) !important;
       }
       
@@ -783,15 +783,15 @@
     
     /* Maintain original hover effects for desktop */
     @media (min-width: 769px) {
-      .gallery-item, .about-image img, .about-content {
+      .gallery-item, .about-image, .about-content {
         opacity: 1;
       }
 
-      .gallery-item img {
+      .gallery-item img, .about-image img {
         filter: grayscale(100%); /* Start with grayscale */
       }
       
-      .gallery-item:hover img {
+      .gallery-item:hover img, .about-image img:hover {
         transform: scale(1.05);
         filter: grayscale(0%);
       }
