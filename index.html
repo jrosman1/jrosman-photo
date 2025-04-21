@@ -278,14 +278,15 @@
       overflow: hidden;
       border: 1px solid var(--glass-border);
       position: relative;
-      aspect-ratio: 16/9;
+      max-width: 100%; /* Prevents overflow */
     }
-    
+
     .about-image img {
       width: 100%;
       height: auto;
       display: block;
-      object-fit: cover;
+      max-height: 500px; /* Adjust this value */
+      object-fit: contain; /* or cover - depends on preference */
       filter: grayscale(100%);
       transition: filter 0.3s ease;
     }
@@ -948,7 +949,6 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <h1><span>FILM PHOTOGRAPHY</span>FOR TIMELESS MOMENTS</h1>
       <a href="#gallery" class="hero-btn">VIEW GALLERY</a>
     </div>
   </section>
@@ -1019,9 +1019,9 @@
       </div>
       <div class="about-content">
         <h2>About Me</h2>
-        <p>Hello! I'm Justin Rosman, a photographer based in Baltimore. My journey into photography began [brief story about how you got started].</p>
-        <p>I specialize in film photography, with a particular focus on capturing life authetically.</p>
-        <p>When I'm not behind the camera, you can find me [hobbies/interests]. I believe that [your photography philosophy or approach].</p>
+        <p>Justin Rosman is a photographer from Florida now based in Baltimore, MD</p>
+        <p>He specializes in film photography, with a particular focus on capturing life authentically.</p>
+        <p>He has experience in street, portraiture, and landscape. Rosman is available for booking now.</p>
       </div>
     </div>
   </section>
