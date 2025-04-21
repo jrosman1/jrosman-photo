@@ -701,6 +701,54 @@
       background: white;
       color: black;
     }
+
+    /* Add these styles to your CSS */
+    /* Set initial states for animations */
+    .gallery-item, .about-image img, .about-content {
+      opacity: 0.4;
+      transition: all 0.8s ease-out;
+    }
+
+    .gallery-item img {
+      filter: grayscale(100%);
+      transition: all 0.8s ease-out;
+    }
+
+    .about-content p {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    /* Animation classes to be added by JavaScript */
+    .fade-in {
+      opacity: 1 !important;
+    }
+
+    .fade-in-up p {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .about-content.fade-in-up p:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .about-content.fade-in-up p:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+
+    /* Maintain original hover effects for desktop */
+    @media (min-width: 769px) {
+      .gallery-item, .about-image img, .about-content {
+        opacity: 1;
+      }
+      
+      .gallery-item:hover img {
+        transform: scale(1.05);
+        filter: grayscale(0%);
+      }
+    }
     
     /* Responsive styles */
     @media (max-width: 768px) {
@@ -1392,6 +1440,40 @@
         modal.classList.remove('active');
         document.body.style.overflow = 'auto';
       }
+    });
+
+    // Scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set up Intersection Observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // Add animations when elements enter viewport
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            
+            // For about content, add special animation class
+            if (entry.target.classList.contains('about-content')) {
+              entry.target.classList.add('fade-in-up');
+            }
+            
+            // Stop observing after animation is applied
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15, // Trigger when at least 15% of the element is visible
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element comes into view
+      });
+      
+      // Elements to observe
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const aboutImage = document.querySelector('.about-image');
+      const aboutContent = document.querySelector('.about-content');
+      
+      // Start observing elements
+      galleryItems.forEach(item => observer.observe(item));
+      if (aboutImage) observer.observe(aboutImage);
+      if (aboutContent) observer.observe(aboutContent);
     });
   </script>
 </body>
