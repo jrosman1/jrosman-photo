@@ -714,6 +714,14 @@
       transition: all 0.8s ease-out;
     }
 
+    /* Hide gallery item info initially */
+    .gallery-item-info {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+
     .about-content p {
       opacity: 0;
       transform: translateY(20px);
@@ -723,6 +731,17 @@
     /* Animation classes to be added by JavaScript */
     .fade-in {
       opacity: 1 !important;
+    }
+
+    /* Important - add this rule to remove grayscale on fade-in */
+    .gallery-item.fade-in img {
+      filter: grayscale(0%) !important;
+    }
+
+    /* Show gallery info when parent has fade-in class */
+    .gallery-item.fade-in .gallery-item-info {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
 
     .fade-in-up p {
@@ -737,11 +756,39 @@
     .about-content.fade-in-up p:nth-child(3) {
       transition-delay: 0.2s;
     }
-
+    
+    /* Override hover behavior on mobile */
+    @media (max-width: 768px) {
+      /* Disable hover effects that might interfere */
+      .gallery-item:hover img {
+        transform: none;
+        filter: grayscale(100%); /* Maintain grayscale until scrolled */
+      }
+      
+      .gallery-item:hover .gallery-item-info {
+        opacity: 0; /* Don't show on hover for mobile */
+        transform: translateY(20px);
+      }
+      
+      /* Only remove grayscale and show info when scrolled */
+      .gallery-item.fade-in img {
+        filter: grayscale(0%) !important;
+      }
+      
+      .gallery-item.fade-in .gallery-item-info {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+    }
+    
     /* Maintain original hover effects for desktop */
     @media (min-width: 769px) {
       .gallery-item, .about-image img, .about-content {
         opacity: 1;
+      }
+
+      .gallery-item img {
+        filter: grayscale(100%); /* Start with grayscale */
       }
       
       .gallery-item:hover img {
