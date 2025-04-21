@@ -101,12 +101,16 @@
       background-position: center;
       z-index: -1;
     }
-    
-    .hero-content {
+
+    .hero-bg::after {
+      content: '';
       position: absolute;
-      bottom: 3rem;
-      left: 3rem;
-      z-index: 1;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%; /* Adjust this value to control fade height */
+      background: linear-gradient(to bottom, transparent, #000);
+      pointer-events: none;
     }
     
     .hero h1 {
@@ -278,15 +282,16 @@
       overflow: hidden;
       border: 1px solid var(--glass-border);
       position: relative;
-      max-width: 100%; /* Prevents overflow */
+      max-width: 500px; /* Add this to control max width */
+      margin: 0 auto; /* Center the image container */
     }
 
     .about-image img {
       width: 100%;
       height: auto;
       display: block;
-      max-height: 500px; /* Adjust this value */
-      object-fit: contain; /* or cover - depends on preference */
+      max-height: 600px; /* Prevent the image from getting too tall */
+      object-fit: cover; /* This will maintain aspect ratio and fill the container */
       filter: grayscale(100%);
       transition: filter 0.3s ease;
     }
@@ -833,20 +838,56 @@
     }
     
     /* Responsive styles */
+    /* Hamburger menu icon */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 10px;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
     /* Tablet and under */
     @media (max-width: 768px) {
       /* Navigation */
+      .nav-toggle {
+        display: block;
+      } 
+
       .header-content {
-        flex-direction: column;
-        gap: 1.5rem;
+        flex-direction: row; /* Changed from column */
+        justify-content: space-between;
+        position: relative;
+      }
+
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--primary-bg);
+        border-bottom: 1px solid var(--glass-border);
+        display: none;
+        padding: 1rem 0;
+        z-index: 100; /* Add this to ensure it's on top */
+      }
+  
+      nav.active {
+        display: block;
       }
       
       nav ul {
+        flex-direction: column;
         margin-top: 0;
       }
       
       nav ul li {
-        margin: 0 1rem;
+        margin: 1rem 0;
       }
       
       /* Hero section */
@@ -887,6 +928,8 @@
         border-right: 1px solid var(--glass-border);
         border-bottom: none;
       }
+      
+
     }
 
     /* Mobile */
@@ -933,6 +976,9 @@
     <div class="container">
       <div class="header-content">
         <div class="logo">Justin Rosman</div>
+        <button class="nav-toggle" id="nav-toggle">
+          <span class="hamburger">☰</span>
+        </button>
         <nav>
           <ul>
             <li><a href="#" class="active">Home</a></li>
@@ -1241,6 +1287,21 @@
     // Update copyright year
     document.getElementById('year').textContent = new Date().getFullYear();
     
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const nav = document.querySelector('nav');
+
+    navToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+      });
+    });
+
     // Image modal functionality
     const galleryItems = document.querySelectorAll('.gallery-item');
     const modal = document.getElementById('imageModal');
