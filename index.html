@@ -722,17 +722,19 @@
       
       .hero-content {
         position: absolute;
-        top: 3rem; /* Position from top instead of bottom */
-        bottom: auto; /* Remove bottom positioning */
-        left: 50%; /* Position at 50% of container width */
-        transform: translateX(-50%); /* Shift back by half its own width */
-        width: auto; /* Let width be determined by content */
+        top: 20%; /* Position in the middle of the screen */
+        left: 0;
+        width: 100%;
+        text-align: center;
         padding: 0;
+        transform: translateY(-50%); /* Move up by half its height */
       }
-
+      
       .hero-btn {
-        margin: 0 auto; /* Center the button */
-        position: relative; /* Maintain position for the after pseudo-element */
+        /* Remove the absolute positioning with the right line */
+        position: static;
+        margin: 0 auto;
+        display: inline-block;
       }
 
       .hero-btn::after {
