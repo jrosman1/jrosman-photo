@@ -884,6 +884,15 @@
       .contact-email-btn {
         padding: 1rem 2rem;
       }
+      /* Longer, softer transitions for mobile */
+      .gallery-item, .about-image, .gallery-item img, .about-image img, .gallery-item-info {
+        transition: all 1.2s ease-in-out !important; /* Slower, smoother transition */
+      }
+      
+      /* Initial state - fully transparent */
+      .gallery-item, .about-image {
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -1271,17 +1280,21 @@
       // Set up Intersection Observer for animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          // Add animations when elements enter viewport
+          // Add or remove animations based on viewport visibility
           if (entry.isIntersecting) {
             entry.target.classList.add('fade-in');
             
             // For about content, add special animation class
             if (entry.target.classList.contains('about-content')) {
               entry.target.classList.add('fade-in-up');
+              // Only stop observing the about content
+              observer.unobserve(entry.target);
             }
-            
-            // Stop observing after animation is applied
-            observer.unobserve(entry.target);
+          } else {
+            // Only remove fade-in class if it's NOT about content
+            if (!entry.target.classList.contains('about-content')) {
+              entry.target.classList.remove('fade-in');
+            }
           }
         });
       }, {
